@@ -134,7 +134,15 @@
       }, 1000);
     }
 
-    document.addEventListener('mousemove', startCountdown);
+    function resetCountdownOnInteraction() {
+      startCountdown();
+    }
+
+    // Detect user interaction to reset countdown
+    document.addEventListener('mousemove', resetCountdownOnInteraction);
+    document.addEventListener('touchstart', resetCountdownOnInteraction);
+    document.addEventListener('scroll', resetCountdownOnInteraction);
+
     startCountdown();
 
     const audio = document.getElementById('audio');
