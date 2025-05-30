@@ -102,11 +102,19 @@
     .social-share a:hover {
       color: #f9a826;
     }
+    .description {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style></head>
 <body>
   <div class="overlay"></div>
   <button class="btn btn-light mute-btn" id="muteToggle"><i class="bi bi-volume-up"></i></button>
   <div class="content">
+    <div class="description">Welcome to the 30-Second Challenge. Your goal: remain completely still and undistracted for 30 seconds. Any movement or scrolling will reset the timer. Take a breath. Focus. Begin now.</div>
     <div id="timer">00:30</div>
     <!-- Change timer duration here -->
     <div class="congrats" id="congrats">🎉 Congratulations! Ready for the <strong>1-Minute Challenge</strong>?</div>
@@ -139,6 +147,7 @@
     let time = 30; // 30 seconds challenge
     let countdown;
     let muted = false;
+    let challengeComplete = false;
 
     function startTimer() {
       clearInterval(countdown);
@@ -150,6 +159,7 @@
           timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         } else {
           clearInterval(countdown);
+          challengeComplete = true;
           congrats.style.display = 'block';
           tryAgainBtn.style.display = 'inline-block';
         }
@@ -157,11 +167,13 @@
     }
 
     function resetTimer() {
-      time = 30; // Reset to 30 seconds
-      timerDisplay.textContent = '00:30';
-      congrats.style.display = 'none';
-      tryAgainBtn.style.display = 'none';
-      startTimer();
+      if (!challengeComplete) {
+        time = 30; // Reset to 30 seconds
+        timerDisplay.textContent = '00:30';
+        congrats.style.display = 'none';
+        tryAgainBtn.style.display = 'none';
+        startTimer();
+      }
     }
 
     document.addEventListener('mousemove', resetTimer);
