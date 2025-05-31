@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +8,12 @@
   <meta property="og:description" content="Try the 30-second mindfulness challenge on Percol8.co to energize your day and sharpen your focus.">
   <meta property="og:image" content="https://percol8.co/og-image.jpg">
   <meta property="og:url" content="https://percol8.co/index.html">
-  <meta property="og:type" content="website">
-
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="30-Second Challenge – Percol8.co">
   <meta name="twitter:description" content="Try the 30-second mindfulness challenge on Percol8.co to energize your day and sharpen your focus.">
   <meta name="twitter:image" content="https://percol8.co/og-image.jpg">
-  <meta name="twitter:site" content="@Percol8Co">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-  <style>
+  <meta name="twitter:site" content="@Percol8Co">  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">  <style>
     html, body {
       margin: 0;
       padding: 0;
@@ -115,15 +108,14 @@
       color: white;
       z-index: 4;
       text-align: center;
-      animation: fade 1s ease-in-out;
+      animation: fade 2s ease-in-out;
     }
     @keyframes fade {
       0% { opacity: 0; }
       50% { opacity: 1; }
       100% { opacity: 0; }
     }
-  </style>
-</head>
+  </style></head>
 <body>
   <div class="overlay"></div>
   <button class="btn btn-light mute-btn" id="muteToggle"><i class="bi bi-volume-up"></i></button>
@@ -148,14 +140,10 @@
   <div class="ad-space">
     <!-- Place ad code here -->
     <div class="bg-light text-dark p-2 rounded">Ad Placeholder (Responsive)</div>
-  </div>
-
-  <audio id="focusAudio" loop autoplay>
+  </div>  <audio id="focusAudio" loop autoplay>
     <source src="your-audio.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
-  </audio>
-
-  <script>
+  </audio>  <script>
     const timerDisplay = document.getElementById('timer');
     const congrats = document.getElementById('congrats');
     const tryAgainBtn = document.getElementById('tryAgain');
@@ -181,13 +169,14 @@
       function nextMessage() {
         if (index < messages.length) {
           intro.textContent = messages[index];
+          intro.style.display = 'block';
           intro.style.animation = 'fade 2s ease-in-out';
           setTimeout(() => {
+            intro.style.display = 'none';
             index++;
             nextMessage();
           }, 2500);
         } else {
-          intro.style.display = 'none';
           content.style.display = 'block';
           startTimer();
         }
@@ -234,6 +223,5 @@
     });
 
     showIntroMessages();
-  </script>
-</body>
+  </script></body>
 </html>
