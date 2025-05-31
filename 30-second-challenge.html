@@ -92,29 +92,19 @@
       text-align: center;
       z-index: 2;
     }
-    .social-share {
-      position: absolute;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
+    .victory-share {
+      display: none;
+      margin-top: 1rem;
     }
-    .social-share a {
+    .victory-share a {
       margin: 0 0.5rem;
       display: inline-block;
       color: #fff;
       font-size: 1.5rem;
       transition: color 0.3s ease;
     }
-    .social-share a:hover {
+    .victory-share a:hover {
       color: #f9a826;
-    }
-    .description {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .intro-message {
       position: absolute;
@@ -141,19 +131,19 @@
   <div class="content" id="challengeContent" style="display:none">
     <div id="timer">00:30</div>
     <!-- Change timer duration here -->
-    <div class="congrats" id="congrats">🎉 Congratulations! Ready for the <strong>1-Minute Challenge</strong>?</div>
+    <div class="congrats" id="congrats">🎉 Congratulations! You passed the 30-Second Challenge! Ready for the <strong>1-Minute Challenge</strong>?</div>
     <a href="1-min-challenge.html" class="try-again-btn" id="tryAgain">Start 1-Minute Challenge</a>
-  </div>
-  <div class="social-share">
-    <a href="https://twitter.com/intent/tweet?text=Try%20the%2030-second%20challenge%20on%20Percol8.co%20%F0%9F%94%8A%20https%3A%2F%2Fpercol8.co" target="_blank" title="Share on Twitter">
-      <i class="bi bi-twitter"></i>
-    </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpercol8.co" target="_blank" title="Share on Facebook">
-      <i class="bi bi-facebook"></i>
-    </a>
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fpercol8.co" target="_blank" title="Share on LinkedIn">
-      <i class="bi bi-linkedin"></i>
-    </a>
+    <div class="victory-share" id="victoryShare">
+      <a href="https://twitter.com/intent/tweet?text=I%20passed%20the%2030-second%20challenge%20on%20Percol8.co%20%E2%9C%8A%20Can%20you%3F%20https%3A%2F%2Fpercol8.co" target="_blank" title="Share on Twitter">
+        <i class="bi bi-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpercol8.co" target="_blank" title="Share on Facebook">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fpercol8.co" target="_blank" title="Share on LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+    </div>
   </div>
   <div class="ad-space">
     <!-- Place ad code here -->
@@ -173,6 +163,7 @@
     const muteToggle = document.getElementById('muteToggle');
     const intro = document.getElementById('intro');
     const content = document.getElementById('challengeContent');
+    const victoryShare = document.getElementById('victoryShare');
 
     let time = 30; // 30 seconds challenge
     let countdown;
@@ -217,6 +208,7 @@
           challengeComplete = true;
           congrats.style.display = 'block';
           tryAgainBtn.style.display = 'inline-block';
+          victoryShare.style.display = 'block';
         }
       }, 1000);
     }
@@ -227,6 +219,7 @@
         timerDisplay.textContent = '00:30';
         congrats.style.display = 'none';
         tryAgainBtn.style.display = 'none';
+        victoryShare.style.display = 'none';
         startTimer();
       }
     }
