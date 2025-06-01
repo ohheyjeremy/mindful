@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1-Minute Challenge – Percol8.co</title>
+  <meta name="description" content="Try the 1-minute mindfulness challenge on Percol8.co to push your limits and improve your focus." />
+  <meta property="og:title" content="1-Minute Challenge – Percol8.co" />
+  <meta property="og:description" content="Try the 1-minute mindfulness challenge on Percol8.co to push your limits and improve your focus." />
+  <meta property="og:image" content="https://percol8.co/og-image.jpg" />
+  <meta property="og:url" content="https://percol8.co/index.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="1-Minute Challenge – Percol8.co" />
+  <meta name="twitter:description" content="Try the 1-minute mindfulness challenge on Percol8.co to push your limits and improve your focus." />
+  <meta name="twitter:image" content="https://percol8.co/og-image.jpg" />
+  <meta name="twitter:site" content="@Percol8Co" />  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      background: url('https://images.unsplash.com/photo-1610656296428-fc360f121d83?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #timer {
+      font-size: 5rem;
+      font-weight: bold;
+      animation: pulse 1s infinite alternate;
+    }
+    @keyframes pulse {
+      from { opacity: 1; }
+      to { opacity: 0.6; }
+    }
+    .mute-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+    }
+    .congrats {
+      display: none;
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+    .try-again-btn {
+      display: none;
+      margin-top: 1rem;
+      background-color: #f9a826;
+      color: black;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.25rem;
+      border-radius: 2rem;
+      text-decoration: none;
+    }
+    .ad-space {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 728px;
+      height: auto;
+      text-align: center;
+      z-index: 2;
+    }
+    .victory-share {
+      display: none;
+      margin-top: 1rem;
+    }
+    .victory-share a {
+      margin: 0 0.5rem;
+      display: inline-block;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .victory-share a:hover {
+      color: #f9a826;
+    }
+    .intro-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem;
+      color: white;
+      z-index: 4;
+      text-align: center;
+      animation: fade 2s ease-in-out;
+    }
+    @keyframes fade {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style></head>
+<body>
+  <div class="overlay"></div>
+  <button class="btn btn-light mute-btn" id="muteToggle"><i class="bi bi-volume-up"></i></button>
+  <div class="intro-message" id="intro"></div>
+  <div class="content" id="challengeContent" style="display:none">
+    <div id="timer">01:00</div>
+    <div class="congrats" id="congrats">🎉 Incredible! You've conquered the 1-Minute Challenge! 🚀</div>
+    <div class="victory-share" id="victoryShare">
+      <a href="https://twitter.com/intent/tweet?text=I%20passed%20the%201-minute%20challenge%20on%20Percol8.co%20%F0%9F%94%A5%20Can%20you%3F%20https%3A%2F%2Fpercol8.co" target="_blank" title="Share on Twitter">
+        <i class="bi bi-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpercol8.co" target="_blank" title="Share on Facebook">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fpercol8.co" target="_blank" title="Share on LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+    </div>
+  </div>
+  <div class="ad-space">
+    <!-- Place ad code here -->
+    <div class="bg-light text-dark p-2 rounded">Ad Placeholder (Responsive)</div>
+  </div>  <audio id="focusAudio" loop autoplay>
+    <source src="your-audio.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>  <script>
+    const timerDisplay = document.getElementById('timer');
+    const congrats = document.getElementById('congrats');
+    const audio = document.getElementById('focusAudio');
+    const muteToggle = document.getElementById('muteToggle');
+    const intro = document.getElementById('intro');
+    const content = document.getElementById('challengeContent');
+    const victoryShare = document.getElementById('victoryShare');
+
+    let time = 60;
+    let countdown;
+    let muted = false;
+    let challengeComplete = false;
+
+    function showIntroMessages() {
+      const messages = [
+        "Welcome to the 1-Minute Challenge",
+        "Your goal: remain completely still for 60 seconds",
+        "Any movement or scrolling will reset the timer",
+        "Focus."
+      ];
+      let index = 0;
+      function nextMessage() {
+        if (index < messages.length) {
+          intro.textContent = messages[index];
+          intro.style.display = 'block';
+          intro.style.animation = 'fade 2s ease-in-out';
+          setTimeout(() => {
+            intro.style.display = 'none';
+            index++;
+            nextMessage();
+          }, 2500);
+        } else {
+          content.style.display = 'block';
+          startTimer();
+        }
+      }
+      nextMessage();
+    }
+
+    function startTimer() {
+      clearInterval(countdown);
+      countdown = setInterval(() => {
+        if (time > 0) {
+          time--;
+          let minutes = Math.floor(time / 60);
+          let seconds = time % 60;
+          timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        } else {
+          clearInterval(countdown);
+          challengeComplete = true;
+          congrats.style.display = 'block';
+          victoryShare.style.display = 'block';
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      if (!challengeComplete) {
+        time = 60;
+        timerDisplay.textContent = '01:00';
+        congrats.style.display = 'none';
+        victoryShare.style.display = 'none';
+        startTimer();
+      }
+    }
+
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('touchstart', resetTimer);
+    document.addEventListener('scroll', resetTimer);
+
+    muteToggle.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      muteToggle.innerHTML = audio.muted ? '<i class="bi bi-volume-mute"></i>' : '<i class="bi bi-volume-up"></i>';
+    });
+
+    showIntroMessages();
+  </script></body>
+</html>
