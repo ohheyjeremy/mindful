@@ -1,0 +1,101 @@
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      background: url('https://images.unsplash.com/photo-1610656296428-fc360f121d83?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #timer {
+      font-size: 5rem;
+      font-weight: bold;
+      animation: pulse 1s infinite alternate;
+    }
+    @keyframes pulse {
+      from { opacity: 1; }
+      to { opacity: 0.6; }
+    }
+    .mute-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+    }
+    .congrats {
+      display: none;
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+    .try-again-btn {
+      display: none;
+      margin-top: 1rem;
+      background-color: #f9a826;
+      color: black;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.25rem;
+      border-radius: 2rem;
+      text-decoration: none;
+    }
+    .ad-space {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 728px;
+      height: auto;
+      text-align: center;
+      z-index: 2;
+    }
+    .victory-share {
+      display: none;
+      margin-top: 1rem;
+    }
+    .victory-share a {
+      margin: 0 0.5rem;
+      display: inline-block;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .victory-share a:hover {
+      color: #f9a826;
+    }
+    .intro-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem;
+      color: white;
+      z-index: 4;
+      text-align: center;
+      animation: fade 2s ease-in-out;
+    }
+    @keyframes fade {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
